@@ -18,7 +18,7 @@ import TodoForm from "./TodoForm";
 
 function TodoApp({ initialTodos }) {
   const [todos, setTodos] = useState(initialTodos);
-
+  console.log('TodoApp', todos);
   let top = todos.reduce(
     (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
 

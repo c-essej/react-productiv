@@ -39,6 +39,8 @@ function TodoForm({ initialFormData=defaultFormData, handleSave }) {
     <form className="NewTodoForm" onSubmit={handleSubmit}>
 
       <div className="mb-3">
+      <label htmlFor="newTodo-title">Title:</label>
+
         <input
           id="newTodo-title"
           name="title"

@@ -13,12 +13,13 @@ import TodoForm from "./TodoForm";
  *
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
-
+//TODO: reflect this in docstring(removeMe)
 function EditableTodo({ todo, update, removeMe }) {
   const [isEditing, setIsEditing] = useState(false);
 
 
   /** Toggle if this is being edited */
+  //TODO: use callback pattern
   function toggleEdit() {
     setIsEditing(!isEditing);
   }
@@ -34,7 +35,7 @@ function EditableTodo({ todo, update, removeMe }) {
     update(updatedTodo);
     toggleEdit();
   }
-
+//TODO: change some of this formating
   return (
     <div className="EditableTodo">
 

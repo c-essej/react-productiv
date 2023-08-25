@@ -46,6 +46,7 @@ function TodoApp({ initialTodos }) {
       <div className="row">
 
         <div className="col-md-6">
+          <h3>Todos</h3>
           {todos.length > 0
             ?
             <EditableTodoList todos={todos} update={update} remove={remove} />

@@ -14,7 +14,7 @@ const defaultFormData = {
  *
  * { TodoApp, EditableTodo } -> TodoForm
  */
-
+//TODO: update docstring to reflect state
 function TodoForm({ initialFormData=defaultFormData, handleSave }) {
 
   const [formData, setFormData] = useState(initialFormData);
@@ -34,7 +34,7 @@ function TodoForm({ initialFormData=defaultFormData, handleSave }) {
     handleSave(formData);
     setFormData(initialFormData);
   };
-
+//TODO: give labels to input elements
   return (
     <form className="NewTodoForm" onSubmit={handleSubmit}>
 

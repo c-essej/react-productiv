@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 
 import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
+import TodoForm from "./TodoForm";
 
 /** App for managing a todo list.
  *
@@ -18,43 +19,59 @@ import EditableTodoList from "./EditableTodoList";
 function TodoApp({ initialTodos }) {
   const [todos, setTodos] = useState(initialTodos);
 
-  /** add a new todo to list */
-  function create(newTodo) {
+  let top = todos.reduce(
+    (acc, cur) => cur.priority < acc.priority ? cur : acc, todos[0]);
 
+  /** add a new todo to list */
+  function create(todo) {
+    const newTodo = { ...todo, id: uuid() };
+    setTodos(todos => [...todos, newTodo]);
   }
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
+    setTodos(todos => todos.map(
+      todo => todo.id === updatedTodo.id ? updatedTodo : todo
+    ));
   }
 
   /** delete a todo by id */
   function remove(id) {
+    console.log("running remove");
+    setTodos(todos => todos.filter(todo => todo.id !== id));
   }
 
   return (
-      <main className="TodoApp">
-        <div className="row">
+    <main className="TodoApp">
+      <div className="row">
 
-          <div className="col-md-6">
-            <EditableTodoList /> OR
-            <span className="text-muted">You have no todos.</span>
-          </div>
+        <div className="col-md-6">
+          {todos.length > 0
+            ?
+            <EditableTodoList todos={todos} update={update} remove={remove} />
+            :
+            <span className="text-muted">You have no todos.</span>}
+        </div>
 
-          <div className="col-md-6">
-            (if no top todo, omit this whole section)
+        <div className="col-md-6">
+          {top
+            ?
             <section className="mb-4">
               <h3>Top Todo</h3>
-              <TopTodo todos={todos}/>
+              <TopTodo todos={todos} />
             </section>
+            :
+            ""
+          }
 
-            <section>
-              <h3 className="mb-3">Add Nü</h3>
-              FIXME
-            </section>
-          </div>
-
+          <section>
+            <h3 className="mb-3">Add Nü</h3>
+            <TodoForm handleSave={create} />
+          </section>
         </div>
-      </main>
+
+      </div>
+    </main>
   );
 }
 

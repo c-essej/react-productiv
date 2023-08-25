@@ -14,22 +14,24 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
 
-function EditableTodo({ todo, update, remove }) {
+function EditableTodo({ todo, update, removeMe }) {
   const [isEditing, setIsEditing] = useState(false);
+
 
   /** Toggle if this is being edited */
   function toggleEdit() {
     setIsEditing(!isEditing);
   }
 
-  /** Call remove fn passed to this. */
-  function handleDelete(remove) {
-    remove(todo.id);
+  /** Call remove fn passed to this component. */
+  function handleDelete() {
+    removeMe();
   }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
   function handleSave(formData) {
-    update(todo.id);
+    const updatedTodo = {...formData, id:todo.id}
+    update(updatedTodo);
     toggleEdit();
   }
 

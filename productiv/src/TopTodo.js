@@ -18,7 +18,6 @@ function TopTodo({ todos }) {
 
   return (
     <div>
-      <h2>Top Todo:</h2>
       <Todo
         todo={top} />
     </div>

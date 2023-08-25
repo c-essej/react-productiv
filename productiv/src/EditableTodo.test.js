@@ -12,7 +12,7 @@ it("renders without crashing", function () {
   debug(container);
 });
 
-it("tests for edit button", function () {
+it("tests toggling between views", function () {
   const testFunc = function(){}
   const { container } = render(
     <EditableTodo todo={TEST_TODOS[0]}
@@ -30,3 +30,4 @@ it("tests for edit button", function () {
   expect(container.querySelector(".EditableTodo")).toBeInTheDocument();
 
 });
+

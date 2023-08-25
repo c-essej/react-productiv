@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const defaultFormData = {
   title: "",
   description: "",
-  priority: ""
+  priority: 3
 };
 
 /** Form for adding.
@@ -18,7 +18,7 @@ const defaultFormData = {
 function TodoForm({ initialFormData=defaultFormData, handleSave }) {
 
   const [formData, setFormData] = useState(initialFormData);
-  console.log(`TodoForm rendering with form data`, formData);
+  // console.log(`TodoForm rendering with form data`, formData);
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -53,6 +53,7 @@ function TodoForm({ initialFormData=defaultFormData, handleSave }) {
       </div>
 
       <div className="mb-3">
+      <label htmlFor="newTodo-description">Description:</label>
         <textarea
           id="newTodo-description"
           name="description"
@@ -67,8 +68,7 @@ function TodoForm({ initialFormData=defaultFormData, handleSave }) {
       <div className="mb-3 d-flex justify-content-between">
         <div className="w-75 d-flex justify-content-between">
           <label htmlFor="newTodo-priority"
-            className="d-inline-flex">Priority:&nbsp;&nbsp;
-          </label>
+            className="d-inline-flex">Priority:</label>
           <select id="newTodo-priority"
             name="priority"
             value={formData.priority}

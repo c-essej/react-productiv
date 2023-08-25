@@ -45,7 +45,7 @@ function TodoApp({ initialTodos }) {
     <main className="TodoApp">
       <div className="row">
 
-        <div className="col-md-6">
+        <div className="col-md-6 EditableTodoList">
           <h3>Todos</h3>
           {todos.length > 0
             ?
@@ -66,7 +66,7 @@ function TodoApp({ initialTodos }) {
           }
 
           <section>
-            <h3 className="mb-3">Add Nü</h3>
+            <h3 className="mb-3 TodoForm">Add Nü</h3>
             <TodoForm handleSave={create} />
           </section>
         </div>

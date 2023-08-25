@@ -39,7 +39,7 @@ describe("Tests for Todo Form", function () {
     console.log("nameField: ")
     debug(nameField)
     const descriptionField = getByLabelText("Description:");
-    const priorityField = container.querySelector("#NewTodoForm-priority");
+    const priorityField = getByLabelText("Priority:");
     const goButton = container.querySelector(".NewTodoForm-addBtn");
 
     //change values
